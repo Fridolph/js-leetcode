@@ -19,13 +19,17 @@
 var twoSum = function(nums, target) {  
   let i,
     len = nums.length,
-    result = {};
+    exsit = {};
 
   for (i = 0; i < len; i++) {
-    if (result[target - nums[i]] !== undefined) {
-      return [result[target - nums[i]], i];
+    // 进行判断，target - nums[i]能进行运算减就进入if语句
+    // 反过来，当nums[i]大于nums的length时即退出循环，这个被减数不存在
+    if (exsit[target - nums[i]] !== undefined) {
+      // 返回结果数组，其包含 exsit[target - nums[i]]
+      return [exsit[target - nums[i]], i];
     }
-    result[nums[i]] = i
+    // nums[i]为对象的key，exsit[key] 赋值为 当前的i 索引 
+    exsit[nums[i]] = i
   }
 };
 
